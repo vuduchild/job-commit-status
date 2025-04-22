@@ -1,0 +1,21 @@
+name: Job Commit Status
+description: Creates and updates a commit status for a GitHub Action job.
+
+inputs:
+  github-token:
+    description: GitHub token to use for authentication.
+    required: true
+    default: ${{ github.token }}
+  job-name:
+    description: The job name to use instead of the default job name.
+    default: ""
+  __job-status-for-post-run-do-not-use:
+    description: DO NOT USE! Used to pass in the job status for the post step.
+    required: true
+    default: ${{ job.status }}
+
+runs:
+  using: "node20"
+  main: "dist/main/index.js"
+  post: "dist/post/index.js"
+  
