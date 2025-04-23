@@ -58,14 +58,14 @@ jobs:
 
 ```yaml
 - name: Set commit status
-  uses: your-username/job-commit-status@v1
+  uses: vuduchild/job-commit-status@v1
 ```
 
 ### With Custom Job Name
 
 ```yaml
 - name: Set commit status
-  uses: your-username/job-commit-status@v1
+  uses: vuduchild/job-commit-status@v1
   with:
     job-name: "Integration Tests"
 ```
