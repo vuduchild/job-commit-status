@@ -1,0 +1,26 @@
+{
+  "name": "job-commit-status",
+  "version": "1.0.0",
+  "description": "GitHub Action that wraps a GitHub Actions Workflow job in a new commit status",
+  "main": "index.js",
+  "dependencies": {
+    "@actions/core": "^1.11.1",
+    "@actions/github": "^6.0.0",
+    "before-after-hook": "^2.2.3",
+    "deprecation": "^2.3.1",
+    "once": "^1.4.0",
+    "tunnel": "^0.0.6",
+    "undici": "^5.29.0",
+    "universal-user-agent": "^6.0.1",
+    "wrappy": "^1.0.2"
+  },
+  "scripts": {
+    "build": "scripts/build.sh"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@vercel/ncc": "^0.38.3"
+  }
+}

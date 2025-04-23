@@ -1,0 +1,19 @@
+name: Test Workflow
+
+on:
+  pull_request: {}
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Our action that wraps the job with a new commit status
+        uses: ./
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Test step
+        shell: bash
+        run: echo "This is a test step"
