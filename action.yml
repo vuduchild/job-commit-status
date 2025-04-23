@@ -1,6 +1,9 @@
 name: Job Commit Status
 description: Creates and updates a commit status for a GitHub Action job.
 
+branding:
+  icon: 'check-circle'
+
 inputs:
   github-token:
     description: GitHub token to use for authentication.
