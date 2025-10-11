@@ -28,7 +28,7 @@ jobs:
       - uses: actions/checkout@v4
       
       - name: Set commit status
-        uses: vuduchild/job-commit-status@v2
+        uses: vuduchild/job-commit-status@v1
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           # Optional: Set a custom job name 
@@ -58,14 +58,14 @@ jobs:
 
 ```yaml
 - name: Set commit status
-  uses: vuduchild/job-commit-status@v2
+  uses: vuduchild/job-commit-status@v1
 ```
 
 ### With Custom Job Name
 
 ```yaml
 - name: Set commit status
-  uses: vuduchild/job-commit-status@v2
+  uses: vuduchild/job-commit-status@v1
   with:
     job-name: "Integration Tests"
 ```
@@ -74,8 +74,8 @@ jobs:
 
 This action uses semantic versioning. You can reference it in several ways:
 
-- `@v2` - Recommended: Always uses the latest v2.x.x release (includes bug fixes and new features)
-- `@v2.0.0` - Specific version: Locks to a specific release
+- `@v1` - Recommended: Always uses the latest v1.x.x release (includes bug fixes and new features)
+- `@v1.1.0` - Specific version: Locks to a specific release
 - `@main` - Not recommended: Uses the latest code from the main branch (may be unstable)
 
 ## License
