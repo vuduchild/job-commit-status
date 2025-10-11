@@ -1,0 +1,62 @@
+name: Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version to release (e.g., 1.1.0)'
+        required: true
+        type: string
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Create tag
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git tag -a "v${{ inputs.version }}" -m "Release v${{ inputs.version }}"
+          git push origin "v${{ inputs.version }}"
+
+      - name: Update major version tag
+        run: |
+          MAJOR_VERSION=$(echo "${{ inputs.version }}" | cut -d. -f1)
+          git tag -fa "v${MAJOR_VERSION}" -m "Update v${MAJOR_VERSION} to v${{ inputs.version }}"
+          git push origin "v${MAJOR_VERSION}" --force
+
+      - name: Extract changelog for this version
+        id: changelog
+        run: |
+          VERSION="${{ inputs.version }}"
+          # Extract the section for this version from CHANGELOG.md
+          awk "/## \[${VERSION}\]/,/## \[.*\]/{if(/## \[${VERSION}\]/)p=1;else if(/## \[/)p=0;if(p)print}" CHANGELOG.md > release-notes.md
+          # Remove the version header line
+          tail -n +2 release-notes.md > release-notes-clean.md
+          echo "Release notes extracted"
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: v${{ inputs.version }}
+          name: v${{ inputs.version }}
+          body_path: release-notes-clean.md
+          draft: false
+          prerelease: false
