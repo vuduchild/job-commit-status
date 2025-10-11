@@ -20,13 +20,15 @@ async function createCommitStatus(description, state) {
   console.log("Job info:", job);
   
   console.log("Creating commit status with state:", state);
+  const prNumber = context.payload.pull_request?.number;
+  const targetUrl = prNumber ? `${job.html_url}?pr=${prNumber}` : job.html_url;
   await octokit.rest.repos.createCommitStatus({
     ...context.repo,
     sha: context.sha,
     context: jobName,
     description: description,
     state: state,
-    target_url: `${job.html_url}?pr=${context.payload.pull_request.number}`,
+    target_url: targetUrl,
   });
   console.log("Commit status updated");
 }
