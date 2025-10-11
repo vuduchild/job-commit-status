@@ -70,6 +70,14 @@ jobs:
     job-name: "Integration Tests"
 ```
 
+## Versioning
+
+This action uses semantic versioning. You can reference it in several ways:
+
+- `@v1` - Recommended: Always uses the latest v1.x.x release (includes bug fixes and new features)
+- `@v1.1.0` - Specific version: Locks to a specific release
+- `@main` - Not recommended: Uses the latest code from the main branch (may be unstable)
+
 ## License
 
 See the [LICENSE](LICENSE) file for details.
