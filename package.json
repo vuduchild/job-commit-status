@@ -1,6 +1,6 @@
 {
   "name": "job-commit-status",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "GitHub Action that wraps a GitHub Actions Workflow job in a new commit status",
   "main": "index.js",
   "dependencies": {
