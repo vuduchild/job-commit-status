@@ -24,7 +24,7 @@ async function createCommitStatus(description, state) {
   const targetUrl = prNumber ? `${job.html_url}?pr=${prNumber}` : job.html_url;
   await octokit.rest.repos.createCommitStatus({
     ...context.repo,
-    sha: context.sha,
+    sha: context.payload.pull_request?.head.sha || context.sha,
     context: jobName,
     description: description,
     state: state,
