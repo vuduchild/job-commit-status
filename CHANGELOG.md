@@ -5,6 +5,20 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.4.0] - 2025-10-17
+
+### Added
+- Retry logic with exponential backoff for GitHub API calls (#29)
+  - GitHub API requests now automatically retry on transient failures (network errors, timeouts, 5xx errors)
+  - Uses exponential backoff strategy with up to 3 retry attempts
+  - Improves reliability when GitHub API experiences temporary issues
+  - Non-retryable errors (4xx client errors) fail immediately without retries
+
+## [1.3.0] - 2025-10-17
+
+### Note
+- Version number placeholder (no additional changes documented)
+
 ## [1.2.0] - 2025-10-16
 
 ### Changed
