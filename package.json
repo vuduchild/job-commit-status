@@ -11,7 +11,7 @@
     "once": "^1.4.0",
     "tunnel": "^0.0.6",
     "undici": "^5.29.0",
-    "universal-user-agent": "^7.0.2",
+    "universal-user-agent": "^7.0.3",
     "wrappy": "^1.0.2"
   },
   "scripts": {
