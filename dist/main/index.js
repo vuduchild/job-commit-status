@@ -30021,8 +30021,8 @@ async function retryWithBackoff(fn, maxRetries = 3, initialDelay = 1000) {
       
       // Check if error is retryable (network errors, timeouts, 5xx errors)
       const isRetryable = 
-        (error.status && error.status >= 500) || // Server errors
-        (error.status && error.status === 408) || // Request timeout
+        error.status === 408 || // Request timeout
+        error.status >= 500 || // Server errors
         error.message?.includes('timeout') ||
         error.message?.includes('ECONNRESET') ||
         error.message?.includes('ETIMEDOUT') ||
