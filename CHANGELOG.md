@@ -14,6 +14,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Improves reliability when GitHub API experiences temporary issues
   - Non-retryable errors (4xx client errors) fail immediately without retries
 
+## [1.3.0] - 2025-10-17
+
+### Note
+- Version number placeholder (no additional changes documented)
+
 ## [1.2.0] - 2025-10-16
 
 ### Changed

@@ -51,7 +51,7 @@ git push origin v1 --force
   - Improves reliability when GitHub API experiences temporary issues
   - Non-retryable errors (4xx client errors) fail immediately without retries
 
-**Full Changelog**: https://github.com/vuduchild/job-commit-status/compare/v1.2.0...v1.4.0
+**Full Changelog**: https://github.com/vuduchild/job-commit-status/compare/v1.3.0...v1.4.0
 ```
 
 5. Click "Publish release"
