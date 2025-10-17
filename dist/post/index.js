@@ -30021,8 +30021,8 @@ async function retryWithBackoff(fn, maxRetries = 3, initialDelay = 1000) {
       
       // Check if error is retryable (network errors, timeouts, 5xx errors)
       const isRetryable = 
-        error.status >= 500 || // Server errors
-        error.status === 408 || // Request timeout
+        (error.status && error.status >= 500) || // Server errors
+        (error.status && error.status === 408) || // Request timeout
         error.message?.includes('timeout') ||
         error.message?.includes('ECONNRESET') ||
         error.message?.includes('ETIMEDOUT') ||
@@ -30061,6 +30061,10 @@ async function createCommitStatus(description, state) {
   // the split is to support reusable workflows
   const job = data.jobs.find(({ name }) => name.split(/ \/ /).pop() === jobName);
   console.log("Job info:", job);
+  
+  if (!job) {
+    throw new Error(`Job with name "${jobName}" not found in workflow run`);
+  }
   
   console.log("Creating commit status with state:", state);
   const prNumber = context.payload.pull_request?.number;
